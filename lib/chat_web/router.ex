@@ -8,17 +8,15 @@ defmodule ChatWeb.Router do
     plug :put_root_layout, {ChatWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug ChatWeb.Plugs.SetUser
   end
 
   # pipeline :api do
   #   plug :accepts, ["json"]
   # end
 
-  # define the new pipeline using auth_plug
-  pipeline :authOptional, do: plug(AuthPlugOptional)
-
   scope "/", ChatWeb do
-    pipe_through [:browser, :authOptional]
+    pipe_through :browser
 
     get "/", PageController, :home
     get "/login", AuthController, :login

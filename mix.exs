@@ -60,8 +60,8 @@ defmodule Chat.MixProject do
 
       # Testing
       # tracking test coverage
-      {:excoveralls, "~> 0.18.0", only: [:test, :dev]},
-      {:auth_plug, "~> 1.5"}
+      {:excoveralls, "~> 0.18.0", only: [:test, :dev]}
+      # {:auth_plug, "~> 1.5"}
     ]
   end
 
