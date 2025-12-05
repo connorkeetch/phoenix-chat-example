@@ -8,6 +8,13 @@ defmodule ChatWeb.Telemetry do
 
   @impl true
   def init(_arg) do
+    :telemetry.attach(
+      "repo-slow-query-logger",
+      [:chat, :repo, :query],
+      &Chat.Telemetry.RepoLogger.handle_event/4,
+      nil
+    )
+
     children = [
       # Telemetry poller will execute the given period measurements
       # every 10_000ms. Learn more here: https://hexdocs.pm/telemetry_metrics
