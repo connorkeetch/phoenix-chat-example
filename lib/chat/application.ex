@@ -16,9 +16,9 @@ defmodule Chat.Application do
       {Phoenix.PubSub, name: Chat.PubSub},
       ChatWeb.Presence,
       # Start the Endpoint (http/https)
-      ChatWeb.Endpoint
-      # Start a worker by calling: Chat.Worker.start_link(arg)
-      # {Chat.Worker, arg}
+      ChatWeb.Endpoint,
+      # Start Oban
+      {Oban, Application.fetch_env!(:chat, Oban)}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
